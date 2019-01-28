@@ -1,0 +1,11 @@
+1.usertab  - 注册登录表
+create table
+
+user pass phoneNum sex qq userImg timer userName trueName age
+
+1.newstab  文章发布表
+user userNmae timer newsName inner
+
+3.commerttabl 评论
+
+user newsName commentInner timer

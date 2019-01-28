@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>博客</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+    <style>
+      .outSide{
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container outSide">
+      <div class="row">
+        <div class="col-md-6 LNode">
+          <img src="" alt="" class="img-circle hide" style="display: inline-block;width: 40px;height: 40px;">
+          <input type="button" class="btn btn-default btn-info" value="注册" data-toggle="modal" data-target=".resNode">
+          <p class="hide" style="display: inline-block;">欢迎回来,<a href="" class="btn btn-link" role="button"></a></p>
+          <input type="button" class="btn btn-default btn-primary btn-loginNode" value="登录" data-toggle="modal" data-target=".loginNode">
+          <input type="button" class="btn btn-default btn-primary btn-xs hide btn-textNode" value="发布文章" data-toggle='modal' data-target='.textInNode'>
+        </div>
+        <div class="col-md-4">
+          <form class="form-inline text-right" action="">
+            <label for="">文章搜索</label>
+            <input type="text" class="form-control">
+          </form>
+        </div>
+      </div>
+    </div>
+<!-- 显示发布的所有内容 -->
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>标题</th>
+        <th>发布人</th>
+        <th>发布时间</th>
+        <th>浏览次数</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <tr>
+        <td>qe</td>
+        <td>req</td>
+        <td>rew</td>
+        <td>rqwe</td>
+      
+      </tr> -->
+    </tbody>
+  </table>
+</div>
+<!-- 发布文章 -->
+<div class="modal fade textInNode" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">发布框</h4>
+      </div>
+      <div class="modal-body">
+        <form action="">
+          <div class="form-group">
+            <label for="">文章名：</label>
+            <input type="text" class="form-control form-newsName">
+          </div>
+          <div class="form-group">
+            <label for="">文章类容</label>
+            <textarea rows="8" class="form-control form-inner" style="resize: none;"></textarea>
+          </div>
+          <input type="button" class="btn btn-posted btn-primary btn-default " value="发布文章">
+        </form>
+      
+      </div>
+      
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- 登录注册 -->
+<div class="modal fade loginNode" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">登录框</h4>
+      </div>
+      <div class="modal-body">
+        <form action="" class="loginForm">
+          <div class="form-group user-group">
+            <label for="">用户名：</label>
+          <input class="form-control" type="text" placeholder="username">
+          </div>
+          <div class="form-group">
+            <label for="">密码：</label>
+            <input class="form-control" type="password" placeholder="password">
+          </div>
+          <input type="button" value="登录" class="btn btn-default btn-info btn-login">
+        </form>
+      </div>
+      
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- 注册 -->
+<div class="modal fade resNode" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">注册信息框</h4>
+      </div>
+      <div class="modal-body">
+        <form action="" class="resForm">
+          <div class="form-group">
+            <label for="">用户名：</label>
+          <input class="form-control" type="text" placeholder="username" id="userNode">
+          </div>
+          <div class="form-group">
+            <label for="">密码：</label>
+            <input class="form-control" type="password" placeholder="password" id="passNode">
+          </div>
+          <div class="form-group">
+            <label for="">昵称：</label>
+            <input class="form-control" type="text" placeholder="昵称" id="userName">
+          </div>
+          <div class="form-group">
+            <label for="">邮箱：</label>
+            <input class="form-control" type="email" placeholder="邮箱" id="emailNode">
+          </div>
+          <div class="form-group">
+            <label for="">性别：</label>
+            <label class="radio-inline">
+              <input type="radio" name="sex" id="inlineRadio1" value="男"> 男
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="sex" id="inlineRadio2" value="女"> 女
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="sex" id="inlineRadio3" value="其他"> 其他
+            </label>
+          </div>
+          <div class="form-group">
+            <label for="">上传头像</label>
+            <input type="file" id="filesNode">
+          </div>
+          <div class="form-group">
+            <label for="">年龄：</label>
+            <input class="form-control" type="text" placeholder="年龄" id="ageNode">
+          </div>
+          <div class="form-group">
+            <label for="">QQ：</label>
+            <input class="form-control" type="text" placeholder="QQ" id="qqNode">
+          </div>
+          <div class="form-group">
+            <label for="">真实姓名：</label>
+            <input class="form-control" type="text" placeholder="真实姓名" id="trueName">
+          </div>
+
+          <input type="button" value="注册" class="btn btn-default btn-info btn-resNode">
+        </form>
+      </div>
+      
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="js/jquery.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="js/bootstrap.min.js"></script>
+   <script>
+      (()=>{
+//发布文章
+$('.btn-posted').on({
+  click:function(){
+    $.ajax({
+      url:'http://localhost:1234/res/postedNews',
+      type:'get',
+      data:{
+        'user':$('.outSide p a').html(),
+        'userName':$('.outSide p a').attr('data-user'),
+        'newsName':$('.form-newsName').val(),
+        'inner':$('.form-inner').val()
+      },
+      success(data){
+        if(data.ok == 0){
+          alert(data.msg)
+        }else{
+          alert(data.msg);
+          $('.textInNode').modal('toggle');
+        }
+      }
+    })
+  }
+})
+
+
+        //登录
+        $('.btn-login').on({
+          click(){
+        if($('.loginForm input:eq(0)').val() == '' || $('.loginForm input:eq(1)').val() ==''){
+            $('.loginForm .form-group').addClass('has-error');
+            return;
+          }
+      
+
+        $.ajax({
+        'url':'http://localhost:1234/res/login',
+        'type':'get',
+        'data':{
+          user:$('.loginForm input:eq(0)').val(),
+          pass:$('.loginForm input:eq(1)').val()
+        },
+        success(data){
+          console.log(data)
+          if(data.ok == 0){
+            alert(data.msg);
+            $('.loginForm .form-group').addClass('has-error');
+          }else{
+            $('.loginNode').modal('toggle');
+            $('.loginForm .form-group').removeClass('has-error');
+            $('.outSide p a').html(data.data[0].user).attr('data-user',data.data[0].userName);
+            $('.loginForm .form-group input').val('');
+            $('.outSide .LNode input').not('.btn-textNode').hide();
+            $('.outSide p,.outSide img ,.btn-textNode').removeClass('hide');
+            $('.outSide img').attr('src','allimg/'+data.data[0].userImg.substring(8))
+
+          } 
+        }
+        })
+
+          }
+        })
+  
+
+        //注册
+        var isTure = true;
+      $('.btn-resNode').on({
+        'click':function(){
+          for(var i = 0;i<$('.resForm .form-group').length;i++){
+            if($('.resForm .form-group').eq(i).find('input').val()==''){
+              isTure = false;
+              // console.log(1)
+              $('.resForm .form-group').eq(i).addClass('has-error');
+            }else{
+              $('.resForm .form-group').eq(i).removeClass('has-error');
+              
+            }
+          }
+          /* 上传*/
+          if(isTure){
+             var formNode = new FormData();
+              formNode.append('user',$('#userNode').val());
+              formNode.append('pass',$('#passNode').val());
+              formNode.append('userName',$('#userName').val());
+              formNode.append('email',$('#emailNode').val());
+              formNode.append('sex',$('input[name="sex"]:checked').val());
+              formNode.append('userImg',filesNode.files[0]);
+              formNode.append('QQ',qqNode.value);
+              formNode.append('age',ageNode.value);
+              formNode.append('trueName',trueName.value);
+              var xhr = new XMLHttpRequest();
+              xhr.open('post','http://localhost:1234/res/resModule',true);
+              xhr.send(formNode);
+              xhr.onload= ()=>{
+                 // console.log(xhr.responseText)
+              var json = eval('('+xhr.responseText+')');
+              if(json.ok==0){
+                alert(json.msg);
+                $('.user-group').addClass('has-error');
+              }else{
+                alert(json.msg);
+                $('.resNode').modal('toggle');
+                $('.resForm input').not('input[type="radio"]').val('');
+                $('input:radio:checked').attr('checked',false);
+                inlineRadio1.checked='checked';
+              }
+              }
+          }
+          isTure = true;
+        }
+      })
+    })()
+   </script>
+  </body>
+</html>

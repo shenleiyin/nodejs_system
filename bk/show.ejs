@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%=data.userName%></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+  <div class="container">
+    <div class="text-center" style="margin:20px;"><h3 style="
+    display: inline;">文章标题： </h3>
+      <h3 class="news" style="
+    display: inline;"><%=data.newsName%></h3></div>
+    <p class="text-center">
+      <span>发布者:
+        <a  href="http://localhost:1234/my?userName=<%=data.userName%>"><%=data.userName%></a>
+      </span>
+      <span style="margin-left: 10px;">发布时间：<%=data.timer%></span>
+      <span>浏览次数：<%=Number(data.download)+1%></span>
+    </p>
+    <p><%=data.inner%></p>
+  </div>
+ 
+   <div class="container" id="loop"> 
+<%for(var i=0;i < comm.length; i++){%>
+    <div class="media">
+    <div class="media-left">
+      <a href="http://localhost:1234/my?userName=<%=data.userName%>">
+          <img width="64px"  class="media-object img-rounded" src="<%=comm[i].userImg%>" alt="...">
+        </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading"><%=comm[i].userName%>
+          <small><%=comm[i].timer%></small>
+        </h4>
+        <%=comm[i].commentinner%>
+      </div>
+    </div>
+<%}%>
+  </div>
+
+  <%if(cookieNode != '----'){%>
+      <div class="container">
+          <p> 欢迎<%=cookieNode.split('-')[0]%>进行评论</p>
+          <form action="" class="form">
+               <div class="form-group">  
+                  <textarea class="form-control form-inner" rows="6"></textarea>
+                  
+                </div>
+                <input type="button" class="btn btn-commontPrent btn-defaulf btn-primary" value="发布评论" 
+                data-user=<%=cookieNode.split('-')[0]%> 
+                data-ID=<%=data.ID%>
+                data-img=allimg/<%=cookieNode.split('-')[1].substring(8)%>
+                data-userNode=<%=cookieNode.split('-')[2]%>
+                >
+          </form>
+      </div>
+  <%}%>
+
+
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="js/jquery.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="js/bootstrap.min.js"></script>
+
+
+    <script type="text/javascript">
+      (()=>{
+
+        function toNode(user,img,userName,timer,commentinner){
+          var oDiv = document.createElement('div');
+          oDiv.className = "media"
+          oDiv.innerHTML = `
+               <div class="media-left">
+                <a href="http://localhost:1234/my?userName=${user}">
+                    <img width="64px"  class="media-object img-rounded" src="${img}" alt="...">
+                  </a>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">${userName}
+                    <small>${timer}</small>
+                  </h4>
+                  ${commentinner}
+                </div>
+          `;
+          return oDiv;
+        }
+
+        $('body').on({
+          click(){
+            // alert(0)
+            
+            if($('.form-inner').val() == ''){
+              return alert('内容不能为空');
+            }
+            $.ajax({
+              url:'http://localhost:1234/show/commentNode',
+              type:'get',
+              data:{
+                user:$('.btn-commontPrent').attr('data-user'),
+                ID:$('.btn-commontPrent').attr('data-ID'),
+                inner:$('.form-inner').val(),
+                newsName:$('.news').html(),
+                userImg:$('.btn-commontPrent').attr('data-img'),
+                userName:$('.btn-commontPrent').attr('data-userNode')
+              },
+              success(data){
+                
+                // window.location.reload()
+                loop.appendChild(toNode(data.msg.user,data.msg.userImg,data.msg.userName,data.msg.timer,data.msg.inner));
+
+              }
+            })
+          }
+        },'.btn-commontPrent')
+
+      })()
+    </script>
+  </body>
+</html>

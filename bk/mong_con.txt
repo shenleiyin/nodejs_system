@@ -1,0 +1,5 @@
+不设置端口号启动MongoDB服务
+mongod --dbpath E:\MongoDB\db
+设置端口号我启动
+mongod --dbpath E:MongoDB\db --port=27000
+如果日后需要通过程序访问数据库的话，那么久需要设置端口号

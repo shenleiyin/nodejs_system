@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  <div class="container">
+    <h3>用户信息</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <td>真实姓名</td>
+          <td>用户昵称</td>
+          <td>QQ</td>
+          <td>年龄</td>
+          <td>头像</td>
+          <td>性别</td>
+          <td>Email</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%=data[0].trueName%></td>
+          <td><%=data[0].userName%></td>
+          <td><%=data[0].QQ%></td>
+          <td><%=data[0].age%></td>
+          <td><img style="width: 40px;height: 40px;" class="img-thumbnail" src="allimg/<%=data[0].userImg.substring(8)%>" alt=""></td>
+          <td><%=data[0].sex%></td>
+          <td><%=data[0].email%></td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>最近发布的文字文章</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>标题</th>
+         
+          <th>发布时间</th>
+          <th>浏览次数</th>
+        </tr>
+      </thead>
+      <tbody>
+       <% for(var i = 0;i < data[1].length; i++){%>
+        <tr>
+          <td><a href="http://localhost:1234/show?userName=<%=data[1][i].userName%>&newsName=<%=data[1][i].newsName%>&ID=<%=data[1][i].ID%>"><%=data[1][i].newsName%></a></td>
+          
+          <td><%=data[1][i].timer%></td>
+          <td><%=data[1][i].download%></td>
+        </tr>
+
+      <%}%>
+      </tbody>
+    </table>
+  </div>
+
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="js/jquery.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
